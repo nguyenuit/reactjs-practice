@@ -12,14 +12,25 @@
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <div id="root"></div>
     <script type="text/babel">
-        const reactCourse = 'ReactJS'
-        const ul = <ul>
-            <li>JS</li>
-            <li>ReactJS</li>
-        </ul>
+        const courses = [
+            {
+                name: 'HTML, CSS'
+            },
+            {
+                name: 'ReactJS'
+            }
+        ]
+
+        const jsx = (
+            <ul>
+                {courses.map((course, index) =>
+                    <li key={index}>{course.name}</li>
+                )}
+            </ul>
+        )
         
         const root = document.getElementById('root')
-        ReactDOM.render(ul, root)
+        ReactDOM.render(jsx, root)
 
     </script>
 </body>
