@@ -13,22 +13,34 @@
     <div id="root"></div>
     <script type="text/babel">
         
-        const Form = {
-            Input(){
-                return <input />
-            },
-            Checkbox(){
-                return <input type="checkbox" />
+        function Button({title, href, onClick}) {
+            let Component = 'button'
+            const props = {}
+
+            if(href){
+                Component = 'a'
+                props.href = href
+                props.target = '_blank'
             }
+
+            if(onClick){
+                props.onClick = onClick
+            }
+
+            return (
+                <Component {...props}>{title}</Component>
+            )
         }
         
         function App(){
             
-            const type = 'Checkbox'
-            const Component = Form[type]
             return (
                 <div id="wrapper">
-                    <Component />
+                    <Button
+                    title ="Click me!"
+                    //href="https://www.google.com"
+                    onClick={() => console.log(Math.random())}     
+                    />
                 </div>
             )
         }
