@@ -12,25 +12,32 @@
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <div id="root"></div>
     <script type="text/babel">
-        const courses = [
-            {
-                name: 'HTML, CSS'
-            },
-            {
-                name: 'ReactJS'
-            }
-        ]
+        
+        function Header(){
+            return (    
+                <div className="Header">Header</div>
+            )
+        }
 
-        const jsx = (
-            <ul>
-                {courses.map((course, index) =>
-                    <li key={index}>{course.name}</li>
-                )}
-            </ul>
+        class Content extends React.Component{
+            render(){
+                return(
+                    <div className="Content">New Content</div>
+                )
+            }
+        }
+
+        const app = (
+            <div className="wrapper">
+                <Header />
+                <Content />
+                <div className="Footer">Footer</div>
+            </div>
         )
         
+        
         const root = document.getElementById('root')
-        ReactDOM.render(jsx, root)
+        ReactDOM.render(app, root)
 
     </script>
 </body>
