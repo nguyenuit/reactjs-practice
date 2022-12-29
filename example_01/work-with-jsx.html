@@ -26,21 +26,30 @@
             }
         ]
 
-        const CourseItem = props => (
-            <div>
-                <h2>{props.title}</h2>
-                <div>{props.description}</div>
-            </div>
-        )
+        function CourseItem({course, onClick}){
+            return (
+                <div>
+                    <h2
+                        onClick={onClick}
+                    >{course.title}</h2>
+                    <div>{course.description}</div>
+                </div>
+            )
+        }
         
         function App(){
+
+            const handleClick = (course) => {
+                console.log(course.title)
+            }
+
             return (
                 <div id="wrapper">
                     {Course.map(course => (
                         <CourseItem
                             key={course.id}
-                            title={course.title}
-                            description={course.description}
+                            course={course}
+                            onClick={() => handleClick(course)}
                         />
                     ))}
                     <button onClick={() => console.log(Math.random())}>Click me!</button>    
