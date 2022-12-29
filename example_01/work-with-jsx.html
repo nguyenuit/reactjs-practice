@@ -30,7 +30,7 @@
             return (
                 <div>
                     <h2
-                        onClick={onClick}
+                        onClick={() => onClick(course)}
                     >{course.title}</h2>
                     <div>{course.description}</div>
                 </div>
@@ -49,7 +49,7 @@
                         <CourseItem
                             key={course.id}
                             course={course}
-                            onClick={() => handleClick(course)}
+                            onClick={handleClick}
                         />
                     ))}
                     <button onClick={() => console.log(Math.random())}>Click me!</button>    
