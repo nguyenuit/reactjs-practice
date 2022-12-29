@@ -13,46 +13,22 @@
     <div id="root"></div>
     <script type="text/babel">
         
-        const Course = [
-            {
-                'id': 1,
-                'title': 'Title test 1',
-                'description': 'Description test 1'
+        const Form = {
+            Input(){
+                return <input />
             },
-            {
-                'id': 2,
-                'title': 'Title test 2',
-                'description': 'Description test 2'
+            Checkbox(){
+                return <input type="checkbox" />
             }
-        ]
-
-        function CourseItem({course, onClick}){
-            return (
-                <div>
-                    <h2
-                        onClick={() => onClick(course)}
-                    >{course.title}</h2>
-                    <div>{course.description}</div>
-                </div>
-            )
         }
         
         function App(){
-
-            const handleClick = (course) => {
-                console.log(course.title)
-            }
-
+            
+            const type = 'Checkbox'
+            const Component = Form[type]
             return (
                 <div id="wrapper">
-                    {Course.map(course => (
-                        <CourseItem
-                            key={course.id}
-                            course={course}
-                            onClick={handleClick}
-                        />
-                    ))}
-                    <button onClick={() => console.log(Math.random())}>Click me!</button>    
+                    <Component />
                 </div>
             )
         }
