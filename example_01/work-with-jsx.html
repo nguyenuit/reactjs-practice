@@ -16,7 +16,7 @@
         function List({data, children}){
             return (
                 <ul>
-                    {data.map((item, index) => children(item, index))}
+                    {data.map((...props) => children(...props))}
                 </ul>
             )
         }
