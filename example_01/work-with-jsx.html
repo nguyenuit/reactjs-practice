@@ -16,7 +16,7 @@
         function List({data, children}){
             return (
                 <ul>
-                    {data.map(item => children(item))}
+                    {data.map((item, index) => children(item, index))}
                 </ul>
             )
         }
@@ -28,7 +28,7 @@
             return (
                 <div id="wrapper">
                     <List data={cars}>
-                        {(item) => <li key={item}>{item}</li>}    
+                        {(item, index) => <li key={index}>{item}</li>}    
                     </List>
                 </div>
             )
