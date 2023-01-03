@@ -7,10 +7,10 @@ function App() {
   })
   
   const handleUpdate = () => {
-    setInfo({
-      ...info,
+    setInfo(prev => ({
+      ...prev,
       bio: "Music and Code"
-    })
+    }))
   }
   return (
     <div className="App" style={{padding: 20}}>
