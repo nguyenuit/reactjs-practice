@@ -1,20 +1,21 @@
 import { useState } from "react";
 
-const orders = [100, 200, 300]
-
 function App() {  
-  const [counter, setCounter] = useState(() => {
-    const total = orders.reduce((total, cur) => total + cur)
-    return total
+  const [info, setInfo] = useState({
+    name: 'Ly Thai Nguyen',
+    age: 34
   })
   
-  const handleIncrease = () => {
-    setCounter(prevState => prevState + 1)
+  const handleUpdate = () => {
+    setInfo({
+      ...info,
+      bio: "Music and Code"
+    })
   }
   return (
     <div className="App" style={{padding: 20}}>
-      <h1>{counter}</h1>
-      <button onClick={handleIncrease}>Increase</button>   
+      <h1>{JSON.stringify(info)}</h1>
+      <button onClick={handleUpdate}>Update</button>   
     </div>
   );
 }
