@@ -2,10 +2,11 @@ import { useState } from "react";
 
 const orders = [100, 200, 300]
 
-function App() {
-  const total = orders.reduce((total, cur) => total + cur)
-  
-  const [counter, setCounter] = useState(total)
+function App() {  
+  const [counter, setCounter] = useState(() => {
+    const total = orders.reduce((total, cur) => total + cur)
+    return total
+  })
   
   const handleIncrease = () => {
     setCounter(prevState => prevState + 1)
