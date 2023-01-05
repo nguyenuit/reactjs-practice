@@ -13,38 +13,28 @@ const courses = [
 
 function App(){
   
-  const [checked, setChecked] = useState([])
-  
-  console.log(checked);
-
-  const handleCheck = (id) => {
-    setChecked(prev => {
-      const isChecked = checked.includes(id)
-      if(isChecked){
-        return checked.filter(item => item !== id)
-      }else{
-        return [...prev, id]
-      }
-    })
-  }
+  const [job, setJob] = useState('')
+  const [jobs, setJobs] = useState([])
 
   const handleSubmit = () => {
-    console.log({id: checked});
+    setJobs(prev => [...prev, job])
+    setJob('');
   }
-
+  
   return (
       <div style={{padding: 20}}>
-        {courses.map(course => (
-          <div key={course.id}>
-            <input
-              type="checkbox"
-              checked={checked.includes(course.id)}
-              onChange = {() => handleCheck(course.id)}
-            />
-            {course.name}
-          </div>
-        ))}
-        <button onClick={handleSubmit}>Register</button>
+        <input 
+          value={job}
+          onChange={ e => setJob(e.target.value) }
+        />
+        <button onClick={handleSubmit}>Add</button>
+        <ul>
+          {jobs.map((job, index) => (
+            <li key={index}>
+              {job}
+            </li>
+          ))}
+        </ul>  
       </div>
   )
 }
