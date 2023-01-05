@@ -1,23 +1,17 @@
 import { useState } from "react";
 
-const courses = [
-  {
-    id: 1,
-    name: 'JS'
-  },
-  {
-    id: 2,
-    name: 'ReactJS'
-  }
-]
-
 function App(){
-  
+  const storageJobs = JSON.parse(localStorage.getItem('jobs'))
   const [job, setJob] = useState('')
-  const [jobs, setJobs] = useState([])
+  const [jobs, setJobs] = useState(storageJobs ?? [])
 
   const handleSubmit = () => {
-    setJobs(prev => [...prev, job])
+
+    setJobs(prev => {
+      const newJobs = [...prev, job]
+      localStorage.setItem('jobs', JSON.stringify(newJobs))
+      return newJobs
+    })
     setJob('');
   }
   
