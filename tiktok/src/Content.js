@@ -12,14 +12,14 @@ import { useEffect, useState } from "react"
 function Content(){
     const [title, setTitle] = useState('')
 
-    // useEffect(() => {
-    //     console.log('Re-render', title)
-    // })
-    fetch('https://jsonplaceholder.typicode.com/posts')
+    useEffect(() => {
+        fetch('https://jsonplaceholder.typicode.com/posts')
         .then(res => res.json())
         .then(posts => {
             console.log('post', posts);
         })
+    })
+    
     
     return (
         <div>
@@ -28,7 +28,6 @@ function Content(){
                 value={title}
                 onChange={e => setTitle(e.target.value)}
             />
-            {console.log('Render')}
         </div>
     )
 }
