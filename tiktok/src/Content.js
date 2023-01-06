@@ -20,7 +20,6 @@ function Content(){
     const [showGoToTop, setShowGoToTop] = useState(false)
 
     useEffect(() => {
-        console.log('load data tu API khi deps change!');
         fetch(`https://jsonplaceholder.typicode.com/${type}`)
             .then(res => res.json())
             .then(posts => {
@@ -33,7 +32,13 @@ function Content(){
             setShowGoToTop(window.scrollY >= 200)
         }
 
-        window.addEventListener('scroll', handleScroll)   
+        window.addEventListener('scroll', handleScroll)
+        console.log('addEventListener');
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+            console.log('removeEventListener');
+        }
     }, [])
     
     return (
