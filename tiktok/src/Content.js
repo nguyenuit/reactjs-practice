@@ -10,9 +10,14 @@ import { useEffect, useState } from "react"
 //-----
 //1. Callback luon duoc goi sau khi component mounted
 
+const tabs = ['posts', 'comments', 'albums']
+
 function Content(){
     const [title, setTitle] = useState('')
     const [posts, setPosts] = useState([])
+    const [type, setType] = useState('posts')
+
+    console.log('type', type);
 
     useEffect(() => {
         console.log('load data tu API');
@@ -25,7 +30,11 @@ function Content(){
     
     return (
         <div>
-            <h1>Hoc ReactJS!</h1>
+            {tabs.map((tab, index) => (
+                <button key={index} onClick={() => setType(tab)}>
+                    {tab}
+                </button>
+            ))}
             <input 
                 value={title}
                 onChange={e => setTitle(e.target.value)}
