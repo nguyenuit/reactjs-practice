@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 //2. useEffect(callback, [])
 //- Chi goi callback 1 lan sau khi component mounted
 //3. useEffect(callback, [deps])
+//- Callback se duoc goi moi khi deps thay doi
 
 //-----
 //1. Callback luon duoc goi sau khi component mounted
@@ -20,13 +21,13 @@ function Content(){
     console.log('type', type);
 
     useEffect(() => {
-        console.log('load data tu API');
-        fetch('https://jsonplaceholder.typicode.com/posts')
-        .then(res => res.json())
-        .then(posts => {
-            setPosts(posts)
-        })
-    }, [])
+        console.log('load data tu API khi deps change!');
+        fetch(`https://jsonplaceholder.typicode.com/${type}`)
+            .then(res => res.json())
+            .then(posts => {
+                setPosts(posts)
+            })
+    }, [type])
     
     return (
         <div>
