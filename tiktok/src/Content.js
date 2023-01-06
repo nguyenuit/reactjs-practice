@@ -13,7 +13,8 @@ function Content(){
     const [title, setTitle] = useState('')
 
     useEffect(() => {
-        console.log('Mounted')
+        // console.log('Re-render', title)
+        document.title = title
     })
 
     return (
