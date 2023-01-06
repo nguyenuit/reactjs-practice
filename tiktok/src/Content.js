@@ -12,11 +12,15 @@ import { useEffect, useState } from "react"
 function Content(){
     const [title, setTitle] = useState('')
 
-    useEffect(() => {
-        // console.log('Re-render', title)
-        document.title = title
-    })
-
+    // useEffect(() => {
+    //     console.log('Re-render', title)
+    // })
+    fetch('https://jsonplaceholder.typicode.com/posts')
+        .then(res => res.json())
+        .then(posts => {
+            console.log('post', posts);
+        })
+    
     return (
         <div>
             <h1>Hoc ReactJS!</h1>
