@@ -49,7 +49,7 @@ function Content(){
             />
             <ul>
                 {posts.map(post => (
-                    <li key={post.id}>{post.title}</li>
+                    <li key={post.id}>{post.title || post.name}</li>
                 ))}
             </ul>
         </div>
