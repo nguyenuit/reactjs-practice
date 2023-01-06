@@ -31,7 +31,14 @@ function Content(){
     return (
         <div>
             {tabs.map((tab, index) => (
-                <button key={index} onClick={() => setType(tab)}>
+                <button
+                key={index}
+                style={type === tab ? {
+                    color:'#fff',
+                    backgroundColor: '#333'
+                }:{}}
+                onClick={() => setType(tab)}
+                >
                     {tab}
                 </button>
             ))}
