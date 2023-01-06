@@ -12,8 +12,22 @@ import { useEffect, useState } from "react"
 //1. Callback luon duoc goi sau khi component mounted
 
 function Content(){
+    
     const [width, setWidth] = useState(window.innerWidth)    
     
+    useEffect(() => {
+        
+        const handleResize = () => {
+            setWidth(window.innerWidth)
+        }
+
+        window.addEventListener('resize', handleResize)
+
+        return () => {
+            window.removeEventListener('resize', handleResize)
+        }
+    })
+
     return (
         <div>
             <h1>{width}</h1>            
