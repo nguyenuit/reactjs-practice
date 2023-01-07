@@ -16,10 +16,12 @@ function Content(){
     const [countDown, setCountDown] = useState(180)
 
     useEffect(() => {
-        setTimeout(() => {
-            setCountDown(countDown - 1)
+        const timerId = setInterval(() => {
+            setCountDown(prevState => prevState - 1)
         }, 1000)
-    }, [countDown])
+
+        return () => clearInterval(timerId)
+    }, [])
     
     return (
         <div>
