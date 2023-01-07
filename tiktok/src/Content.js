@@ -15,10 +15,13 @@ function Content(){
     
     const [countDown, setCountDown] = useState(180)
 
-    setInterval(() => {
-        setCountDown(countDown - 1)
-    })
-
+    useEffect(() => {
+        setInterval(() => {
+            setCountDown(countDown - 1)
+            console.log('countDown', countDown);
+        }, 1000)
+    }, [])
+    
     return (
         <div>
             <h1>{countDown}</h1>            
