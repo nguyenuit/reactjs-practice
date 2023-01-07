@@ -17,8 +17,7 @@ function Content(){
 
     useEffect(() => {
         setInterval(() => {
-            setCountDown(countDown - 1)
-            console.log('countDown', countDown);
+            setCountDown(prevState => prevState - 1)
         }, 1000)
     }, [])
     
