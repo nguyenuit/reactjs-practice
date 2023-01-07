@@ -13,24 +13,15 @@ import { useEffect, useState } from "react"
 
 function Content(){
     
-    const [width, setWidth] = useState(window.innerWidth)    
-    
-    useEffect(() => {
-        
-        const handleResize = () => {
-            setWidth(window.innerWidth)
-        }
+    const [countDown, setCountDown] = useState(180)
 
-        window.addEventListener('resize', handleResize)
-
-        return () => {
-            window.removeEventListener('resize', handleResize)
-        }
+    setInterval(() => {
+        setCountDown(countDown - 1)
     })
 
     return (
         <div>
-            <h1>{width}</h1>            
+            <h1>{countDown}</h1>            
         </div>
     )
 }
