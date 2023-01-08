@@ -1,4 +1,4 @@
-import logger from './logger.js'
+import logger from './logger/index.js'
 import * as constant from './constant.js'
 
 logger('Get paid by your work!', constant.TYPE_LOG)
