@@ -1,10 +1,6 @@
 import logger from './logger.js'
-import {
-    TYPE_LOG,
-    TYPE_WARN,
-    TYPE_ERROR
-} from './constant.js'
+import * as constant from './constant.js'
 
-logger('Get paid by your work!', TYPE_LOG)
-logger('Thuc hanh 1 lan de tranh phai doc lai ly thuyet n lan!', TYPE_WARN)
-logger('Se gap rat nhieu kho khan nhung phai co gang len!', TYPE_WARN)
+logger('Get paid by your work!', constant.TYPE_LOG)
+logger('Thuc hanh 1 lan de tranh phai doc lai ly thuyet n lan!', constant.TYPE_WARN)
+logger('Se gap rat nhieu kho khan nhung phai co gang len!', constant.TYPE_WARN)
