@@ -13,19 +13,32 @@ import { useEffect, useState } from "react"
 
 function Content(){
     
-    const [count, setCount] = useState(1)
+    const [previewAvatar, setPreviewAvatar] = useState('')
+
+    const handlePreview = (e) => {
+        const file = e.target.files
+        const previewAvatar = URL.createObjectURL(file[0])
+
+        setPreviewAvatar(previewAvatar)
+    }
 
     useEffect(() => {
-        console.log(`Mounted or Re-render lan ${count}`);
+        // ...
         return () => {
-            console.log(`Cleanup lan ${count}`);
+            // ...
         }
-    }, [count])
+    }, [previewAvatar])
     
     return (
         <div>
-            <h1>{count}</h1>
-            <button onClick={() => setCount(count + 1)}>Click me!</button>            
+            <input
+                type="file"
+                multiple
+                onChange={handlePreview}
+            />
+            {previewAvatar && (
+                <img src={previewAvatar} alt="Preview Avatar" width={500} />
+            )}                 
         </div>
     )
 }
