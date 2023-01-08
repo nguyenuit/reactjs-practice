@@ -13,21 +13,20 @@ import { useEffect, useState } from "react"
 
 function Content(){
     
-    const [previewAvatar, setPreviewAvatar] = useState('')
+    const [avatar, setavatar] = useState()
 
     const handlePreview = (e) => {
-        const file = e.target.files
-        const previewAvatar = URL.createObjectURL(file[0])
+        const file = e.target.files[0]
+        file.preview = URL.createObjectURL(file)
 
-        setPreviewAvatar(previewAvatar)
+        setavatar(file)
     }
 
     useEffect(() => {
-        // ...
         return () => {
-            // ...
+            URL.revokeObjectURL(avatar.preview)
         }
-    }, [previewAvatar])
+    }, [avatar])
     
     return (
         <div>
@@ -36,8 +35,8 @@ function Content(){
                 multiple
                 onChange={handlePreview}
             />
-            {previewAvatar && (
-                <img src={previewAvatar} alt="Preview Avatar" width={500} />
+            {avatar && (
+                <img src={avatar.preview} alt="Preview Avatar" width={500} />
             )}                 
         </div>
     )
