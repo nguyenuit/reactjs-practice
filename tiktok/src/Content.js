@@ -10,34 +10,36 @@ import { useEffect, useState } from "react"
 
 //-----
 //1. Callback luon duoc goi sau khi component mounted
+const lessons = [
+    {
+        id: 1,
+        name: 'ReactJS'
+    },
+    {
+        id: 2,
+        name: 'JS'
+    }
+]
 
 function Content(){
     
-    const [avatar, setavatar] = useState()
-
-    const handlePreview = (e) => {
-        const file = e.target.files[0]
-        file.preview = URL.createObjectURL(file)
-
-        setavatar(file)
-    }
-
-    useEffect(() => {
-        return () => {
-            avatar && URL.revokeObjectURL(avatar.preview)
-        }
-    }, [avatar])
+    const [lessonId, setLessonId] = useState(1)
     
     return (
         <div>
-            <input
-                type="file"
-                multiple
-                onChange={handlePreview}
-            />
-            {avatar && (
-                <img src={avatar.preview} alt="Preview Avatar" width={500} />
-            )}                 
+            {lessons.map(lesson => (
+                <li
+                    key={lesson.id}
+                    style={{
+                        color: lessonId == lesson.id ?
+                            'red' :
+                            '#333'
+                    }}
+                    onClick={() => setLessonId(lesson.id)}
+                >
+                    {lesson.name}
+                </li>
+            ))}
         </div>
     )
 }
