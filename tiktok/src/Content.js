@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useLayoutEffect } from "react"
 
 //1. useEffect(callback)
 //- Goi callback moi khi component re-render
@@ -15,7 +15,7 @@ function Content(){
     
     const [count, setCount] = useState(0)
     
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (count > 3)
             setCount(0)
     }, [count])
