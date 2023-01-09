@@ -11,21 +11,21 @@ import { useEffect, useState, useRef } from "react"
 //-----
 //1. Callback luon duoc goi sau khi component mounted
 
-let timerId
-
 function Content(){
     
     const [count, setCount] = useState(60)
 
+    const timerId = useRef()
+
     const handleStart = () => {
-        timerId = setInterval(() => {
+        timerId.current = setInterval(() => {
             setCount(prevCount => prevCount - 1)
         }, 1000)
     
     }
 
     const handleStop = () => {
-        clearInterval(timerId)
+        clearInterval(timerId.current)
     }
 
     return (
