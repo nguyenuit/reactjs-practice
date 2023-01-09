@@ -12,7 +12,7 @@ function App(){
 
   return (
       <div style={{padding: 20}}>
-        <Content count={count} />
+        <Content />
         <h1>{count}</h1>
         <button onClick={increase}>Click me!</button>
       </div>

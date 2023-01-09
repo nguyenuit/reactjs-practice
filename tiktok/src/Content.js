@@ -1,8 +1,10 @@
-function Content({count}){
+import { memo } from "react"
+
+function Content(){
     console.log('re-render');
     return (
-        <h2>Get paid by your work! {count}</h2>
+        <h2>Get paid by your work!</h2>
     )
 }
 
-export default Content
+export default memo(Content)
