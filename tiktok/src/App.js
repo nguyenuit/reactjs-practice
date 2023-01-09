@@ -1,33 +1,45 @@
 import { useReducer, useState } from "react";
 
-const initState = 0
+const initState = {
+  job: '',
+  jobs: []
+}
 
-const UP_ACTION = 'up'
-const DOWN_ACTION = 'down'
+const SET_JOB = 'set_job'
+const ADD_JOB = 'add_job'
+const DELETE_JOB = 'delete_job'
 
 const reducer = (state, action) => {
   switch(action){
-    case UP_ACTION:
+    case SET_JOB:
       return state + 1
-    case DOWN_ACTION:
+    case ADD_JOB:
       return state - 1
+    case DELETE_JOB:
+      return ''
     default:
       throw new Error('Invalid action')
   }
 }
 
 function App(){
-  const [count, dispatch] = useReducer(reducer, initState)
+  const [state, dispatch] = useReducer(reducer, initState)
+
+  const {job, jobs} = state
 
   return (
       <div style={{padding: 20}}>
-          <h1>{count}</h1>
-          <button onClick={() => dispatch(UP_ACTION)}>
-            UP
-          </button>
-          <button onClick={() => dispatch(DOWN_ACTION)}>
-            DOWN
-          </button>
+          <h1>Todo</h1>
+          <input
+          value={job}
+          placeholder="plan cong viec..."
+          />
+          <button>Add</button>
+          <ul>
+          {jobs && jobs.map((job, index) => (
+            <li key={index}>{job}</li>
+          ))}
+          </ul>
       </div>
   )
 }
