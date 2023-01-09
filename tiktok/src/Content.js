@@ -31,7 +31,7 @@ function Content(){
         }
         window.addEventListener(`lesson-${lessonId}`, handleComment)
 
-        return () => window.removeEventListener(`lesson-${lessonId}`)
+        return () => window.removeEventListener(`lesson-${lessonId}`, handleComment)
     }, [lessonId])
     
     return (
