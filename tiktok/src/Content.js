@@ -1,4 +1,4 @@
-import { useEffect, useState, useLayoutEffect } from "react"
+import { useEffect, useState, useRef } from "react"
 
 //1. useEffect(callback)
 //- Goi callback moi khi component re-render
@@ -11,23 +11,29 @@ import { useEffect, useState, useLayoutEffect } from "react"
 //-----
 //1. Callback luon duoc goi sau khi component mounted
 
+
 function Content(){
     
-    const [count, setCount] = useState(0)
-    
-    useLayoutEffect(() => {
-        if (count > 3)
-            setCount(0)
-    }, [count])
+    const [count, setCount] = useState(60)
 
-    const handleRun = () => {
-        setCount(count + 1)
+    let timerId
+    
+    const handleStart = () => {
+        timerId = setInterval(() => {
+            setCount(prevCount => prevCount - 1)
+        }, 1000)
+    
+    }
+
+    const handleStop = () => {
+        clearInterval(timerId)
     }
 
     return (
         <div>
            <h1>{count}</h1>
-            <button onClick={handleRun}>Run</button>
+            <button onClick={handleStart}>Start</button>
+            <button onClick={handleStop}>Stop</button>
         </div>
     )
 }
