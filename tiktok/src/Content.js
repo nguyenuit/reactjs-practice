@@ -1,50 +1,6 @@
-import { useEffect, useState, useRef } from "react"
-
-//1. useEffect(callback)
-//- Goi callback moi khi component re-render
-//- Goi callback sau khi component them element vao DOM
-//2. useEffect(callback, [])
-//- Chi goi callback 1 lan sau khi component mounted
-//3. useEffect(callback, [deps])
-//- Callback se duoc goi moi khi deps thay doi
-
-//-----
-//1. Callback luon duoc goi sau khi component mounted
-
 function Content(){
-    
-    const [count, setCount] = useState(60)
-
-    const timerId = useRef()
-    const prevCount = useRef()
-    const h1Ref = useRef()
-
-    useEffect(() => {
-        prevCount.current = count
-    }, [count])
-
-    useEffect(() => {
-        console.log(h1Ref.current.getBoundingClientRect());
-    })
-
-    const handleStart = () => {
-        timerId.current = setInterval(() => {
-            setCount(prevCount => prevCount - 1)
-        }, 1000)
-    }
-
-    const handleStop = () => {
-        clearInterval(timerId.current)
-    }
-
-    console.log(count, prevCount.current);
-
     return (
-        <div>
-            <h1 ref={h1Ref}>{count}</h1>
-            <button onClick={handleStart}>Start</button>
-            <button onClick={handleStop}>Stop</button>
-        </div>
+        <h2>Get paid by your work!</h2>
     )
 }
 
