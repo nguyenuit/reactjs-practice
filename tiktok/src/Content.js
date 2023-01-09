@@ -17,10 +17,15 @@ function Content(){
 
     const timerId = useRef()
     const prevCount = useRef()
+    const h1Ref = useRef()
 
     useEffect(() => {
         prevCount.current = count
     }, [count])
+
+    useEffect(() => {
+        console.log(h1Ref.current);
+    })
 
     const handleStart = () => {
         timerId.current = setInterval(() => {
@@ -36,7 +41,7 @@ function Content(){
 
     return (
         <div>
-           <h1>{count}</h1>
+            <h1 ref={h1Ref}>{count}</h1>
             <button onClick={handleStart}>Start</button>
             <button onClick={handleStop}>Stop</button>
         </div>
