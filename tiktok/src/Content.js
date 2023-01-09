@@ -24,7 +24,7 @@ function Content(){
     }, [count])
 
     useEffect(() => {
-        console.log(h1Ref.current);
+        console.log(h1Ref.current.getBoundingClientRect());
     })
 
     const handleStart = () => {
