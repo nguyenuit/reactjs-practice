@@ -10,45 +10,24 @@ import { useEffect, useState } from "react"
 
 //-----
 //1. Callback luon duoc goi sau khi component mounted
-const lessons = [
-    {
-        id: 1,
-        name: 'ReactJS'
-    },
-    {
-        id: 2,
-        name: 'JS'
-    }
-]
 
 function Content(){
     
-    const [lessonId, setLessonId] = useState(1)
-
-    useEffect(() => {
-        const handleComment = ({ detail }) => {
-            console.log(detail);
-        }
-        window.addEventListener(`lesson-${lessonId}`, handleComment)
-
-        return () => window.removeEventListener(`lesson-${lessonId}`, handleComment)
-    }, [lessonId])
+    const [count, setCount] = useState(0)
     
+    useEffect(() => {
+        if (count > 3)
+            setCount(0)
+    }, [count])
+
+    const handleRun = () => {
+        setCount(count + 1)
+    }
+
     return (
         <div>
-            {lessons.map(lesson => (
-                <li
-                    key={lesson.id}
-                    style={{
-                        color: lessonId == lesson.id ?
-                            'red' :
-                            '#333'
-                    }}
-                    onClick={() => setLessonId(lesson.id)}
-                >
-                    {lesson.name}
-                </li>
-            ))}
+           <h1>{count}</h1>
+            <button onClick={handleRun}>Run</button>
         </div>
     )
 }
