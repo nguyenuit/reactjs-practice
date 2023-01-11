@@ -10,18 +10,25 @@ const ADD_JOB = 'add_job'
 const DELETE_JOB = 'delete_job'
 
 const setJob = payload => {
-    return {
-      type: SET_JOB,
-      payload
-    }
+  return {
+    type: SET_JOB,
+    payload
+  }
+}
+
+const addJob = payload => {
+  return {
+    type: ADD_JOB,
+    payload
+  }
 }
 
 console.log(setJob('solve problem!'));
 
 const reducer = (state, action) => {
 
-  console.log('Prev state:', state);
-  console.log('Action:', action);
+  // console.log('Prev state:', state);
+  // console.log('Action:', action);
 
   let newState
 
