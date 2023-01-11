@@ -19,27 +19,42 @@ const setJob = payload => {
 console.log(setJob('solve problem!'));
 
 const reducer = (state, action) => {
+
+  console.log('Prev state:', state);
+  console.log('Action:', action);
+
+  let newState
+
   switch(action.type){
     case SET_JOB:
-      return {
+      newState = {
         ...state,
         job: action.payload
       }
+      break
     case ADD_JOB:
-      return state - 1
+      newState = {
+        ...state,
+        jobs: [...state.jobs, action.payload]
+      }
+      break
     case DELETE_JOB:
       return ''
     default:
       throw new Error('Invalid action!')
   }
 
-  return state;
+  return newState;
 }
 
 function App(){
   const [state, dispatch] = useReducer(reducer, initState)
 
   const {job, jobs} = state
+
+  const handleSubmit = () => {
+    dispatch(addJob(job))
+  }
 
   return (
       <div style={{padding: 20}}>
@@ -51,7 +66,7 @@ function App(){
               dispatch(setJob(e.target.value))
             }}
           />
-          <button>Add</button>
+          <button onClick={handleSubmit}>Add</button>
           <ul>
           {jobs && jobs.map((job, index) => (
             <li key={index}>{job} &times;</li>
