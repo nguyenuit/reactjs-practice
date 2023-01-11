@@ -19,16 +19,19 @@ const setJob = payload => {
 console.log(setJob('solve problem!'));
 
 const reducer = (state, action) => {
-  // switch(action){
-  //   case SET_JOB:
-  //     return state + 1
-  //   case ADD_JOB:
-  //     return state - 1
-  //   case DELETE_JOB:
-  //     return ''
-  //   default:
-  //     throw new Error('Invalid action')
-  // }f
+  switch(action.type){
+    case SET_JOB:
+      return {
+        ...state,
+        job: action.payload
+      }
+    case ADD_JOB:
+      return state - 1
+    case DELETE_JOB:
+      return ''
+    default:
+      throw new Error('Invalid action!')
+  }
 
   return state;
 }
@@ -51,7 +54,7 @@ function App(){
           <button>Add</button>
           <ul>
           {jobs && jobs.map((job, index) => (
-            <li key={index}>{job}</li>
+            <li key={index}>{job} &times;</li>
           ))}
           </ul>
       </div>
