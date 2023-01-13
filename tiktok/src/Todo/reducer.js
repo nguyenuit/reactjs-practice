@@ -6,35 +6,28 @@ export const initState = {
   }
 
 const reducer = (state, action) => {
-    let newState
-  
     switch(action.type){
       case SET_JOB:
-        newState = {
+        return {
           ...state,
           job: action.payload
         }
-        break
       case ADD_JOB:
-        newState = {
+        return {
           ...state,
           jobs: [...state.jobs, action.payload]
         }
-        break
       case DELETE_JOB:
         const newJob = [...state.jobs]
         newJob.splice(action.payload, 1)
   
-        newState = {
+        return {
           ...state,
           jobs: newJob
         }
-        break
       default:
         throw new Error('Invalid action!')
     }
-  
-    return newState;
 }
 
 export default reducer
