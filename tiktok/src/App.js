@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useReducer, useRef, useState } from "react";
 
 const initState = {
   job: '',
@@ -23,13 +23,7 @@ const addJob = payload => {
   }
 }
 
-console.log(setJob('solve problem!'));
-
 const reducer = (state, action) => {
-
-  // console.log('Prev state:', state);
-  // console.log('Action:', action);
-
   let newState
 
   switch(action.type){
@@ -51,6 +45,8 @@ const reducer = (state, action) => {
       throw new Error('Invalid action!')
   }
 
+  // console.log(newState);
+
   return newState;
 }
 
@@ -59,14 +55,20 @@ function App(){
 
   const {job, jobs} = state
 
+  const inputRef = useRef()
+
   const handleSubmit = () => {
     dispatch(addJob(job))
+    dispatch(setJob(''))
+
+    inputRef.current.focus()
   }
 
   return (
       <div style={{padding: 20}}>
           <h1>Todo</h1>
           <input
+            ref={inputRef}
             value={job}
             placeholder="plan cong viec..."
             onChange={e => {
