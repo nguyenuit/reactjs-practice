@@ -12,7 +12,9 @@ function logger(reducer){
         
         // return newState
 
-        return reducer(prevState, action)
+        // return reducer(prevState, action)
+
+        return reducer
     }
 
 }
