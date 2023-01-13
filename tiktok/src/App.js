@@ -23,6 +23,13 @@ const addJob = payload => {
   }
 }
 
+const deleteJob = payload => {
+  return {
+    type: DELETE_JOB,
+    payload
+  }
+}
+
 const reducer = (state, action) => {
   let newState
 
@@ -40,12 +47,17 @@ const reducer = (state, action) => {
       }
       break
     case DELETE_JOB:
-      return ''
+      const newJob = [...state.jobs]
+      newJob.splice(action.payload, 1)
+
+      newState = {
+        ...state,
+        jobs: newJob
+      }
+      break
     default:
       throw new Error('Invalid action!')
   }
-
-  // console.log(newState);
 
   return newState;
 }
@@ -78,7 +90,12 @@ function App(){
           <button onClick={handleSubmit}>Add</button>
           <ul>
           {jobs && jobs.map((job, index) => (
-            <li key={index}>{job} &times;</li>
+            <li key={index}>
+              {job} 
+              <span onClick={() => dispatch(deleteJob(index))}>
+                &nbsp;&times;
+              </span>
+            </li>
           ))}
           </ul>
       </div>
