@@ -1,4 +1,10 @@
-function Paragraph({ theme }){
+import { useContext } from "react"
+import { ThemeContext } from "./App"
+
+function Paragraph(){
+
+    const theme = useContext(ThemeContext)
+
     return (
         <div className={theme}> 
             <h1>Keep system up to date to run business!</h1>
