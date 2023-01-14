@@ -1,10 +1,11 @@
-import { memo } from "react"
+import Paragraph from "./Paragraph"
 
-function Content(){
-    console.log('re-render');
+function Content({ theme }){
     return (
-        <h2>Get paid by your work!</h2>
+        <div>
+            <Paragraph theme={theme}/>
+        </div>
     )
 }
 
-export default memo(Content)
+export default Content
