@@ -1,8 +1,7 @@
-import { useState, createContext } from "react"
 import Content from "./Content"
+import { ThemeContext } from "./ThemeContext"
+import { useContext } from "react"
 import "./App.css"
-
-export const ThemeContext = createContext()
 
 // Context
 // Component A => Component B => Component C
@@ -12,20 +11,12 @@ export const ThemeContext = createContext()
 // 3. Consumer
 
 function App(){
-
-  const [theme, setTheme] = useState('dark')
-
-  const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light': 'dark')
-  }
-
+  const context = useContext(ThemeContext)
   return (
-    <ThemeContext.Provider value={theme}>
       <div style={{padding: 20}}>
-        <button onClick={toggleTheme}>Toggle theme</button>
+        <button onClick={context.toggleTheme}>Toggle theme</button>
         <Content />
       </div>
-    </ThemeContext.Provider>
   )
 }
 
