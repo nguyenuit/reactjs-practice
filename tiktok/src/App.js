@@ -1,8 +1,8 @@
 import { useContext } from "react"
-import { StoreContext } from "./store"
+import { useStore } from "./store"
 
 function App(){
-  const [state, dispatch] = useContext(StoreContext)
+  const [state, dispatch] = useStore()
   console.log(state);
 
   return (
