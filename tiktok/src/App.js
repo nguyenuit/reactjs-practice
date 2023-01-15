@@ -3,9 +3,13 @@ import { useStore, actions } from "./store"
 
 function App(){
   const [state, dispatch] = useStore()
-  const { todos, todoInput} = state
+  const { todos, todoInput } = state
 
-  console.log(todoInput);
+  const handleAdd = () => {
+    dispatch(actions.addTodo(todoInput))
+  }
+
+  console.log(todos)
 
   return (
     <div>
@@ -17,6 +21,7 @@ function App(){
           dispatch(actions.setTodoInput(e.target.value))
         }}
       />
+      <button onClick={handleAdd}>Add</button>
     </div>
   )
 }
