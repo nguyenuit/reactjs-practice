@@ -1,29 +1,16 @@
-import { useContext } from "react"
-import { useStore, actions } from "./store"
+import { useRef } from "react"
+import { useImperativeHandle } from "react"
+import Video from './Video'
 
 function App(){
-  const [state, dispatch] = useStore()
-  const { todos, todoInput } = state
-
-  const handleAdd = () => {
-    dispatch(actions.addTodo(todoInput))
-  }
-
-  console.log(todos)
+  const videoRef = useRef()
 
   return (
     <div>
-      <h1>Get paid by your work!</h1>
-      <input
-        value={todoInput}
-        placeholder="Enter todo..."
-        onChange={ e => {
-          dispatch(actions.setTodoInput(e.target.value))
-        }}
-      />
-      <button onClick={handleAdd}>Add</button>
+      <Video ref={videoRef} />
+      <button>Play</button>
+      <button>Pause</button>
     </div>
   )
 }
-
 export default App
