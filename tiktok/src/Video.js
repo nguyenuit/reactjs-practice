@@ -1,13 +1,14 @@
 import video1 from './videos/video-1.mp4'
+import { forwardRef } from 'react'
 
-function Video(props){
+function Video(props, ref){
     return (
         <video
-            ref={props.ref}
+            ref={ref}
             src={video1}
-            width={500}
+            width={300}
         />
     )
 }
 
-export default Video
+export default forwardRef(Video)
