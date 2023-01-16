@@ -8,11 +8,19 @@ function App(){
     console.log(videoRef.current);
   })
   
+  const handlePlay = () => {
+    videoRef.current.play()
+  }
+  
+  const handlePause = () => {
+    videoRef.current.pause()
+  }
+
   return (
     <div>
       <Video ref={videoRef} />
-      <button>Play</button>
-      <button>Pause</button>
+      <button onClick={handlePlay}>Play</button>
+      <button onClick={handlePause}>Pause</button>
     </div>
   )
 }
