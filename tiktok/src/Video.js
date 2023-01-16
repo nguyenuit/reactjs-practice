@@ -1,11 +1,11 @@
 import video1 from './videos/video-1.mp4'
 
-function Video(){
+function Video(props){
     return (
         <video
-            ref={PaymentResponse.ref}
+            ref={props.ref}
             src={video1}
-            width={200}
+            width={500}
         />
     )
 }
