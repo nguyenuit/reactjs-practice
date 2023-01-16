@@ -1,12 +1,8 @@
-import { useEffect, useRef } from "react"
-import { useImperativeHandle } from "react"
+import { useRef } from "react"
 import Video from './Video'
 
 function App(){
   const videoRef = useRef()
-  useEffect(() => {
-    console.log(videoRef.current);
-  })
   
   const handlePlay = () => {
     videoRef.current.play()
