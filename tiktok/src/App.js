@@ -5,7 +5,7 @@ function App(){
   const videoRef = useRef()
   
   const handlePlay = () => {
-    videoRef.current.play()
+    videoRef.current.remove()
   }
   
   const handlePause = () => {
