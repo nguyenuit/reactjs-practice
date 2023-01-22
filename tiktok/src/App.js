@@ -1,14 +1,8 @@
-import Heading from './components/Heading'
-import Globalstyles from './components/Globalstyles'
+import Button from "./components/Button"
 
 function App(){
   return (
-    <Globalstyles>
-      <Heading />
-      <div className="d-flex">
-        test
-      </div>
-    </Globalstyles>
+    <Button />
   )
 }
 export default App
