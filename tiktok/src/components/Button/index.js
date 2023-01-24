@@ -1,3 +1,4 @@
+import clsx from "clsx"
 import styles from './Button.module.css'
 
 function Button(){
@@ -6,7 +7,7 @@ function Button(){
             <button className={styles.btn}>
                 Click me!
             </button>
-            <button className={[styles.btn, styles.active].join(' ')}>
+            <button className={clsx(styles.btn, styles.active)}>
                 Click me!
             </button>
         </>
