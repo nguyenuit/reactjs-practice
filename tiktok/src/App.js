@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 import Home from './pages/Home'
 import HomePage from './pages/Home'
 import NewsPage from './pages/News'
@@ -9,8 +9,8 @@ function App(){
       <h1>React Router</h1>
       <nav>
         <ul>
-          <li><a href="/">Home page</a></li>
-          <li><a href="/news">News page</a></li>
+          <li><Link to="/">Home page</Link></li>
+          <li><Link to="/news">News page</Link></li>
         </ul>
       </nav>
 
