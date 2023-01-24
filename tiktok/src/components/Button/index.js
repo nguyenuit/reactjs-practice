@@ -6,7 +6,7 @@ function Button(){
             <button className={styles.btn}>
                 Click me!
             </button>
-            <button className={`${styles.btn} ${styles.active}`}>
+            <button className={[styles.btn, styles.active].join(' ')}>
                 Click me!
             </button>
         </>
