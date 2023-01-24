@@ -4,3 +4,7 @@
 .active{
     background-color: red;
 }
+.primary{
+    color: #fff;
+    background-color: #007bfe;
+}
