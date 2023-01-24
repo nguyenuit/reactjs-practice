@@ -1,3 +1,7 @@
+import { Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import HomePage from './pages/Home'
+import NewsPage from './pages/News'
 
 function App(){
   return (
@@ -9,6 +13,11 @@ function App(){
           <li><a href="/news">News page</a></li>
         </ul>
       </nav>
+
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/news" element={<NewsPage />} />  
+      </Routes> 
     </div>
   )
 }
