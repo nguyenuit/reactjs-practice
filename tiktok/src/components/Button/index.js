@@ -2,7 +2,7 @@ import clsx from "clsx"
 import styles from './Button.module.css'
 
 function Button({ primary }){
-    const classes = clsx(styles.btn, {
+    const classes = clsx(styles.btn, 'd-flex' ,{
         [styles.primary]: primary
     });
 
