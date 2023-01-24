@@ -7,7 +7,9 @@ function Button(){
             <button className={styles.btn}>
                 Click me!
             </button>
-            <button className={clsx(styles.btn, styles.active)}>
+            <button className={clsx(styles.btn, {
+                [styles.active]: true
+                })}>
                 Click me!
             </button>
         </>
