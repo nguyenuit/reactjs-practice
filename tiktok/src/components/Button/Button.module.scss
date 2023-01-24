@@ -1,5 +1,9 @@
 .btn{
     background-color: gray;
+    &:hover{
+        cursor: pointer;
+        opacity: 0.9;
+    }
 }
 .active{
     background-color: red;
